@@ -64,7 +64,14 @@ function App() {
           const poke_img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
             index + 1
           }.png`;
-          return <Card onImg={poke_img} name={el.name} key={el.name}></Card>;
+          return (
+            <Card
+              onImg={poke_img}
+              name={el.name}
+              key={el.name}
+              onIndex={index}
+            ></Card>
+          );
         })}
       </div>
 
@@ -73,11 +80,11 @@ function App() {
   );
 }
 
-function Card({ name, onImg }) {
+function Card({ name, onImg, onIndex }) {
   return (
     <div className="card">
       <img src={onImg} alt={name} className="pokemon_image" />
-      <div className="name">{name}</div>
+      <div className="name">{`${onIndex + 1}.   ${name}`}</div>
     </div>
   );
 }
